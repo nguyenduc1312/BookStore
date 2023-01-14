@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_dchi">
+    <Key>
+      <PropertyRef Name="dchi_id" />
+    </Key>
+    <Property Name="dchi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="khang_id" Type="Int32" Nullable="false" />
+    <Property Name="tinh_id" Type="Int32" Nullable="false" />
+    <Property Name="quan_id" Type="Int32" Nullable="false" />
+    <Property Name="phuong_id" Type="Int32" Nullable="false" />
+    <Property Name="dcct_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_dchichitiet" Relationship="Self.fk_dchi_id_dcct" FromRole="tbl_dchi" ToRole="tbl_dchichitiet" />
+    <NavigationProperty Name="tbl_khachhang" Relationship="Self.fk_dchi_id_khang" FromRole="tbl_dchi" ToRole="tbl_khachhang" />
+    <NavigationProperty Name="tbl_phuong" Relationship="Self.fk_dchi_id_phuong" FromRole="tbl_dchi" ToRole="tbl_phuong" />
+    <NavigationProperty Name="tbl_quan" Relationship="Self.fk_dchi_id_quan" FromRole="tbl_dchi" ToRole="tbl_quan" />
+    <NavigationProperty Name="tbl_tinh" Relationship="Self.fk_dchi_id_tinh" FromRole="tbl_dchi" ToRole="tbl_tinh" />
+    <NavigationProperty Name="tbl_hoadon" Relationship="Self.fk_hoadon_id_dchi" FromRole="tbl_dchi" ToRole="tbl_hoadon" />
+  </EntityType>
+  <EntityType Name="tbl_dchichitiet">
+    <Key>
+      <PropertyRef Name="dcct_id" />
+    </Key>
+    <Property Name="dcct_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dcct" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_dchi" Relationship="Self.fk_dchi_id_dcct" FromRole="tbl_dchichitiet" ToRole="tbl_dchi" />
+  </EntityType>
+  <EntityType Name="tbl_giohang">
+    <Key>
+      <PropertyRef Name="giohang_id" />
+    </Key>
+    <Property Name="giohang_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="khang_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_giohang_chitiet" Relationship="Self.fk_ghct_id_giohang" FromRole="tbl_giohang" ToRole="tbl_giohang_chitiet" />
+    <NavigationProperty Name="tbl_khachhang" Relationship="Self.fk_giohang_id_khang" FromRole="tbl_giohang" ToRole="tbl_khachhang" />
+  </EntityType>
+  <EntityType Name="tbl_giohang_chitiet">
+    <Key>
+      <PropertyRef Name="ghct_id" />
+    </Key>
+    <Property Name="ghct_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="giohang_id" Type="Int32" Nullable="false" />
+    <Property Name="sach_id" Type="Int32" Nullable="false" />
+    <Property Name="dongia" Type="Decimal" Precision="12" Scale="6" Nullable="false" />
+    <NavigationProperty Name="tbl_giohang" Relationship="Self.fk_ghct_id_giohang" FromRole="tbl_giohang_chitiet" ToRole="tbl_giohang" />
+    <NavigationProperty Name="tbl_sach" Relationship="Self.fk_ghct_id_sach" FromRole="tbl_giohang_chitiet" ToRole="tbl_sach" />
+  </EntityType>
+  <EntityType Name="tbl_hoadon">
+    <Key>
+      <PropertyRef Name="hoadon_id" />
+    </Key>
+    <Property Name="hoadon_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="khang_id" Type="Int32" Nullable="false" />
+    <Property Name="dchi_id" Type="Int32" Nullable="false" />
+    <Property Name="email_ngnhan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sdt_ngnhan" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="hten_ngnhan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nlap" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="giolap" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="tt_trcthue" Type="Decimal" Precision="12" Scale="6" Nullable="false" />
+    <Property Name="tt_ck" Type="Decimal" Precision="12" Scale="6" Nullable="false" />
+    <Property Name="tt_thue" Type="Decimal" Precision="12" Scale="6" Nullable="false" />
+    <Property Name="thanhtien" Type="Decimal" Precision="12" Scale="6" Nullable="false" />
+    <NavigationProperty Name="tbl_dchi" Relationship="Self.fk_hoadon_id_dchi" FromRole="tbl_hoadon" ToRole="tbl_dchi" />
+    <NavigationProperty Name="tbl_hoadon_chitiet" Relationship="Self.fk_hdct_id_hdon" FromRole="tbl_hoadon" ToRole="tbl_hoadon_chitiet" />
+    <NavigationProperty Name="tbl_khachhang" Relationship="Self.fk_hoadon_id_khang" FromRole="tbl_hoadon" ToRole="tbl_khachhang" />
+  </EntityType>
+  <EntityType Name="tbl_hoadon_chitiet">
+    <Key>
+      <PropertyRef Name="hdchitiet_id" />
+    </Key>
+    <Property Name="hdchitiet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoadon_id" Type="Int32" Nullable="false" />
+    <Property Name="sach_id" Type="Int32" Nullable="false" />
+    <Property Name="dgia" Type="Decimal" Precision="12" Scale="6" Nullable="false" />
+    <Property Name="pt_ck" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="stck" Type="Decimal" Precision="12" Scale="6" />
+    <Property Name="slg" Type="Int32" Nullable="false" />
+    <Property Name="pt_thue" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="tienthue" Type="Decimal" Precision="12" Scale="6" />
+    <Property Name="thanhtien" Type="Decimal" Precision="12" Scale="6" Nullable="false" />
+    <NavigationProperty Name="tbl_hoadon" Relationship="Self.fk_hdct_id_hdon" FromRole="tbl_hoadon_chitiet" ToRole="tbl_hoadon" />
+    <NavigationProperty Name="tbl_sach" Relationship="Self.fk_hdct_id_sach" FromRole="tbl_hoadon_chitiet" ToRole="tbl_sach" />
+  </EntityType>
+  <EntityType Name="tbl_img_sach">
+    <Key>
+      <PropertyRef Name="img_id" />
+    </Key>
+    <Property Name="img_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="img_path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sach_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_sach" Relationship="Self.fk_img_id_sach" FromRole="tbl_img_sach" ToRole="tbl_sach" />
+  </EntityType>
+  <EntityType Name="tbl_khachhang">
+    <Key>
+      <PropertyRef Name="khang_id" />
+    </Key>
+    <Property Name="khang_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="matkhau" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="hoten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sdt" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="gtinh" Type="Int32" Nullable="false" />
+    <Property Name="ngsinh" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tbl_dchi" Relationship="Self.fk_dchi_id_khang" FromRole="tbl_khachhang" ToRole="tbl_dchi" />
+    <NavigationProperty Name="tbl_giohang" Relationship="Self.fk_giohang_id_khang" FromRole="tbl_khachhang" ToRole="tbl_giohang" />
+    <NavigationProperty Name="tbl_hoadon" Relationship="Self.fk_hoadon_id_khang" FromRole="tbl_khachhang" ToRole="tbl_hoadon" />
+  </EntityType>
+  <EntityType Name="tbl_nxb">
+    <Key>
+      <PropertyRef Name="nxb_id" />
+    </Key>
+    <Property Name="nxb_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_nxb" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_sach" Relationship="Self.fk_sach_id_nxb" FromRole="tbl_nxb" ToRole="tbl_sach" />
+  </EntityType>
+  <EntityType Name="tbl_phuong">
+    <Key>
+      <PropertyRef Name="phuong_id" />
+    </Key>
+    <Property Name="phuong_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_phuong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_dchi" Relationship="Self.fk_dchi_id_phuong" FromRole="tbl_phuong" ToRole="tbl_dchi" />
+  </EntityType>
+  <EntityType Name="tbl_quan">
+    <Key>
+      <PropertyRef Name="quan_id" />
+    </Key>
+    <Property Name="quan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_quan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_dchi" Relationship="Self.fk_dchi_id_quan" FromRole="tbl_quan" ToRole="tbl_dchi" />
+  </EntityType>
+  <EntityType Name="tbl_sach">
+    <Key>
+      <PropertyRef Name="sach_id" />
+    </Key>
+    <Property Name="sach_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_sach" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gia" Type="Decimal" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="trangthai_id" Type="Int32" Nullable="false" />
+    <Property Name="nxb_id" Type="Int32" Nullable="false" />
+    <Property Name="mota" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="sl_conlai" Type="Int32" Nullable="false" />
+    <Property Name="ngayst" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tbl_giohang_chitiet" Relationship="Self.fk_ghct_id_sach" FromRole="tbl_sach" ToRole="tbl_giohang_chitiet" />
+    <NavigationProperty Name="tbl_hoadon_chitiet" Relationship="Self.fk_hdct_id_sach" FromRole="tbl_sach" ToRole="tbl_hoadon_chitiet" />
+    <NavigationProperty Name="tbl_img_sach" Relationship="Self.fk_img_id_sach" FromRole="tbl_sach" ToRole="tbl_img_sach" />
+    <NavigationProperty Name="tbl_nxb" Relationship="Self.fk_sach_id_nxb" FromRole="tbl_sach" ToRole="tbl_nxb" />
+    <NavigationProperty Name="tbl_trangthai" Relationship="Self.fk_sach_id_trangthai" FromRole="tbl_sach" ToRole="tbl_trangthai" />
+    <NavigationProperty Name="tbl_tacgia" Relationship="Self.tbl_sach_tacgia" FromRole="tbl_sach" ToRole="tbl_tacgia" />
+    <NavigationProperty Name="tbl_theloai" Relationship="Self.tbl_sach_theloai" FromRole="tbl_sach" ToRole="tbl_theloai" />
+  </EntityType>
+  <EntityType Name="tbl_tacgia">
+    <Key>
+      <PropertyRef Name="tacgia_id" />
+    </Key>
+    <Property Name="tacgia_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_tacgia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_sach" Relationship="Self.tbl_sach_tacgia" FromRole="tbl_tacgia" ToRole="tbl_sach" />
+  </EntityType>
+  <EntityType Name="tbl_theloai">
+    <Key>
+      <PropertyRef Name="theloai_id" />
+    </Key>
+    <Property Name="theloai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_theloai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_sach" Relationship="Self.tbl_sach_theloai" FromRole="tbl_theloai" ToRole="tbl_sach" />
+  </EntityType>
+  <EntityType Name="tbl_tinh">
+    <Key>
+      <PropertyRef Name="tinh_id" />
+    </Key>
+    <Property Name="tinh_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_tinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_dchi" Relationship="Self.fk_dchi_id_tinh" FromRole="tbl_tinh" ToRole="tbl_dchi" />
+  </EntityType>
+  <EntityType Name="tbl_trangthai">
+    <Key>
+      <PropertyRef Name="trangthai_id" />
+    </Key>
+    <Property Name="trangthai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_trangthai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_sach" Relationship="Self.fk_sach_id_trangthai" FromRole="tbl_trangthai" ToRole="tbl_sach" />
+  </EntityType>
+  <Association Name="fk_dchi_id_dcct">
+    <End Role="tbl_dchichitiet" Type="Self.tbl_dchichitiet" Multiplicity="1" />
+    <End Role="tbl_dchi" Type="Self.tbl_dchi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_dchichitiet">
+        <PropertyRef Name="dcct_id" />
+      </Principal>
+      <Dependent Role="tbl_dchi">
+        <PropertyRef Name="dcct_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dchi_id_khang">
+    <End Role="tbl_khachhang" Type="Self.tbl_khachhang" Multiplicity="1" />
+    <End Role="tbl_dchi" Type="Self.tbl_dchi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_khachhang">
+        <PropertyRef Name="khang_id" />
+      </Principal>
+      <Dependent Role="tbl_dchi">
+        <PropertyRef Name="khang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dchi_id_phuong">
+    <End Role="tbl_phuong" Type="Self.tbl_phuong" Multiplicity="1" />
+    <End Role="tbl_dchi" Type="Self.tbl_dchi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_phuong">
+        <PropertyRef Name="phuong_id" />
+      </Principal>
+      <Dependent Role="tbl_dchi">
+        <PropertyRef Name="phuong_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dchi_id_quan">
+    <End Role="tbl_quan" Type="Self.tbl_quan" Multiplicity="1" />
+    <End Role="tbl_dchi" Type="Self.tbl_dchi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_quan">
+        <PropertyRef Name="quan_id" />
+      </Principal>
+      <Dependent Role="tbl_dchi">
+        <PropertyRef Name="quan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dchi_id_tinh">
+    <End Role="tbl_tinh" Type="Self.tbl_tinh" Multiplicity="1" />
+    <End Role="tbl_dchi" Type="Self.tbl_dchi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_tinh">
+        <PropertyRef Name="tinh_id" />
+      </Principal>
+      <Dependent Role="tbl_dchi">
+        <PropertyRef Name="tinh_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hoadon_id_dchi">
+    <End Role="tbl_dchi" Type="Self.tbl_dchi" Multiplicity="1" />
+    <End Role="tbl_hoadon" Type="Self.tbl_hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_dchi">
+        <PropertyRef Name="dchi_id" />
+      </Principal>
+      <Dependent Role="tbl_hoadon">
+        <PropertyRef Name="dchi_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ghct_id_giohang">
+    <End Role="tbl_giohang" Type="Self.tbl_giohang" Multiplicity="1" />
+    <End Role="tbl_giohang_chitiet" Type="Self.tbl_giohang_chitiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_giohang">
+        <PropertyRef Name="giohang_id" />
+      </Principal>
+      <Dependent Role="tbl_giohang_chitiet">
+        <PropertyRef Name="giohang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_giohang_id_khang">
+    <End Role="tbl_khachhang" Type="Self.tbl_khachhang" Multiplicity="1" />
+    <End Role="tbl_giohang" Type="Self.tbl_giohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_khachhang">
+        <PropertyRef Name="khang_id" />
+      </Principal>
+      <Dependent Role="tbl_giohang">
+        <PropertyRef Name="khang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ghct_id_sach">
+    <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="1" />
+    <End Role="tbl_giohang_chitiet" Type="Self.tbl_giohang_chitiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_sach">
+        <PropertyRef Name="sach_id" />
+      </Principal>
+      <Dependent Role="tbl_giohang_chitiet">
+        <PropertyRef Name="sach_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hdct_id_hdon">
+    <End Role="tbl_hoadon" Type="Self.tbl_hoadon" Multiplicity="1" />
+    <End Role="tbl_hoadon_chitiet" Type="Self.tbl_hoadon_chitiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_hoadon">
+        <PropertyRef Name="hoadon_id" />
+      </Principal>
+      <Dependent Role="tbl_hoadon_chitiet">
+        <PropertyRef Name="hoadon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hoadon_id_khang">
+    <End Role="tbl_khachhang" Type="Self.tbl_khachhang" Multiplicity="1" />
+    <End Role="tbl_hoadon" Type="Self.tbl_hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_khachhang">
+        <PropertyRef Name="khang_id" />
+      </Principal>
+      <Dependent Role="tbl_hoadon">
+        <PropertyRef Name="khang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_hdct_id_sach">
+    <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="1" />
+    <End Role="tbl_hoadon_chitiet" Type="Self.tbl_hoadon_chitiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_sach">
+        <PropertyRef Name="sach_id" />
+      </Principal>
+      <Dependent Role="tbl_hoadon_chitiet">
+        <PropertyRef Name="sach_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_img_id_sach">
+    <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="1" />
+    <End Role="tbl_img_sach" Type="Self.tbl_img_sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_sach">
+        <PropertyRef Name="sach_id" />
+      </Principal>
+      <Dependent Role="tbl_img_sach">
+        <PropertyRef Name="sach_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sach_id_nxb">
+    <End Role="tbl_nxb" Type="Self.tbl_nxb" Multiplicity="1" />
+    <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_nxb">
+        <PropertyRef Name="nxb_id" />
+      </Principal>
+      <Dependent Role="tbl_sach">
+        <PropertyRef Name="nxb_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sach_id_trangthai">
+    <End Role="tbl_trangthai" Type="Self.tbl_trangthai" Multiplicity="1" />
+    <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_trangthai">
+        <PropertyRef Name="trangthai_id" />
+      </Principal>
+      <Dependent Role="tbl_sach">
+        <PropertyRef Name="trangthai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tbl_sach_tacgia">
+    <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="*" />
+    <End Role="tbl_tacgia" Type="Self.tbl_tacgia" Multiplicity="*" />
+  </Association>
+  <Association Name="tbl_sach_theloai">
+    <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="*" />
+    <End Role="tbl_theloai" Type="Self.tbl_theloai" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BookStoreDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_dchi" EntityType="Self.tbl_dchi" />
+    <EntitySet Name="tbl_dchichitiet" EntityType="Self.tbl_dchichitiet" />
+    <EntitySet Name="tbl_giohang" EntityType="Self.tbl_giohang" />
+    <EntitySet Name="tbl_giohang_chitiet" EntityType="Self.tbl_giohang_chitiet" />
+    <EntitySet Name="tbl_hoadon" EntityType="Self.tbl_hoadon" />
+    <EntitySet Name="tbl_hoadon_chitiet" EntityType="Self.tbl_hoadon_chitiet" />
+    <EntitySet Name="tbl_img_sach" EntityType="Self.tbl_img_sach" />
+    <EntitySet Name="tbl_khachhang" EntityType="Self.tbl_khachhang" />
+    <EntitySet Name="tbl_nxb" EntityType="Self.tbl_nxb" />
+    <EntitySet Name="tbl_phuong" EntityType="Self.tbl_phuong" />
+    <EntitySet Name="tbl_quan" EntityType="Self.tbl_quan" />
+    <EntitySet Name="tbl_sach" EntityType="Self.tbl_sach" />
+    <EntitySet Name="tbl_tacgia" EntityType="Self.tbl_tacgia" />
+    <EntitySet Name="tbl_theloai" EntityType="Self.tbl_theloai" />
+    <EntitySet Name="tbl_tinh" EntityType="Self.tbl_tinh" />
+    <EntitySet Name="tbl_trangthai" EntityType="Self.tbl_trangthai" />
+    <AssociationSet Name="fk_dchi_id_dcct" Association="Self.fk_dchi_id_dcct">
+      <End Role="tbl_dchichitiet" EntitySet="tbl_dchichitiet" />
+      <End Role="tbl_dchi" EntitySet="tbl_dchi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dchi_id_khang" Association="Self.fk_dchi_id_khang">
+      <End Role="tbl_khachhang" EntitySet="tbl_khachhang" />
+      <End Role="tbl_dchi" EntitySet="tbl_dchi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dchi_id_phuong" Association="Self.fk_dchi_id_phuong">
+      <End Role="tbl_phuong" EntitySet="tbl_phuong" />
+      <End Role="tbl_dchi" EntitySet="tbl_dchi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dchi_id_quan" Association="Self.fk_dchi_id_quan">
+      <End Role="tbl_quan" EntitySet="tbl_quan" />
+      <End Role="tbl_dchi" EntitySet="tbl_dchi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dchi_id_tinh" Association="Self.fk_dchi_id_tinh">
+      <End Role="tbl_tinh" EntitySet="tbl_tinh" />
+      <End Role="tbl_dchi" EntitySet="tbl_dchi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hoadon_id_dchi" Association="Self.fk_hoadon_id_dchi">
+      <End Role="tbl_dchi" EntitySet="tbl_dchi" />
+      <End Role="tbl_hoadon" EntitySet="tbl_hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ghct_id_giohang" Association="Self.fk_ghct_id_giohang">
+      <End Role="tbl_giohang" EntitySet="tbl_giohang" />
+      <End Role="tbl_giohang_chitiet" EntitySet="tbl_giohang_chitiet" />
+    </AssociationSet>
+    <AssociationSet Name="fk_giohang_id_khang" Association="Self.fk_giohang_id_khang">
+      <End Role="tbl_khachhang" EntitySet="tbl_khachhang" />
+      <End Role="tbl_giohang" EntitySet="tbl_giohang" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ghct_id_sach" Association="Self.fk_ghct_id_sach">
+      <End Role="tbl_sach" EntitySet="tbl_sach" />
+      <End Role="tbl_giohang_chitiet" EntitySet="tbl_giohang_chitiet" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hdct_id_hdon" Association="Self.fk_hdct_id_hdon">
+      <End Role="tbl_hoadon" EntitySet="tbl_hoadon" />
+      <End Role="tbl_hoadon_chitiet" EntitySet="tbl_hoadon_chitiet" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hoadon_id_khang" Association="Self.fk_hoadon_id_khang">
+      <End Role="tbl_khachhang" EntitySet="tbl_khachhang" />
+      <End Role="tbl_hoadon" EntitySet="tbl_hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_hdct_id_sach" Association="Self.fk_hdct_id_sach">
+      <End Role="tbl_sach" EntitySet="tbl_sach" />
+      <End Role="tbl_hoadon_chitiet" EntitySet="tbl_hoadon_chitiet" />
+    </AssociationSet>
+    <AssociationSet Name="fk_img_id_sach" Association="Self.fk_img_id_sach">
+      <End Role="tbl_sach" EntitySet="tbl_sach" />
+      <End Role="tbl_img_sach" EntitySet="tbl_img_sach" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sach_id_nxb" Association="Self.fk_sach_id_nxb">
+      <End Role="tbl_nxb" EntitySet="tbl_nxb" />
+      <End Role="tbl_sach" EntitySet="tbl_sach" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sach_id_trangthai" Association="Self.fk_sach_id_trangthai">
+      <End Role="tbl_trangthai" EntitySet="tbl_trangthai" />
+      <End Role="tbl_sach" EntitySet="tbl_sach" />
+    </AssociationSet>
+    <AssociationSet Name="tbl_sach_tacgia" Association="Self.tbl_sach_tacgia">
+      <End Role="tbl_sach" EntitySet="tbl_sach" />
+      <End Role="tbl_tacgia" EntitySet="tbl_tacgia" />
+    </AssociationSet>
+    <AssociationSet Name="tbl_sach_theloai" Association="Self.tbl_sach_theloai">
+      <End Role="tbl_sach" EntitySet="tbl_sach" />
+      <End Role="tbl_theloai" EntitySet="tbl_theloai" />
+    </AssociationSet>
+    <FunctionImport Name="QRY_GetAllHomePage" />
+  </EntityContainer>
+</Schema>

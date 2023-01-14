@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BookStoreModelStoreContainer" CdmEntityContainer="BookStoreDBContext">
+    <EntitySetMapping Name="tbl_dchi">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_dchi">
+        <MappingFragment StoreEntitySet="tbl_dchi">
+          <ScalarProperty Name="dchi_id" ColumnName="dchi_id" />
+          <ScalarProperty Name="khang_id" ColumnName="khang_id" />
+          <ScalarProperty Name="tinh_id" ColumnName="tinh_id" />
+          <ScalarProperty Name="quan_id" ColumnName="quan_id" />
+          <ScalarProperty Name="phuong_id" ColumnName="phuong_id" />
+          <ScalarProperty Name="dcct_id" ColumnName="dcct_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_dchichitiet">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_dchichitiet">
+        <MappingFragment StoreEntitySet="tbl_dchichitiet">
+          <ScalarProperty Name="dcct_id" ColumnName="dcct_id" />
+          <ScalarProperty Name="dcct" ColumnName="dcct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_giohang">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_giohang">
+        <MappingFragment StoreEntitySet="tbl_giohang">
+          <ScalarProperty Name="giohang_id" ColumnName="giohang_id" />
+          <ScalarProperty Name="khang_id" ColumnName="khang_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_giohang_chitiet">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_giohang_chitiet">
+        <MappingFragment StoreEntitySet="tbl_giohang_chitiet">
+          <ScalarProperty Name="ghct_id" ColumnName="ghct_id" />
+          <ScalarProperty Name="giohang_id" ColumnName="giohang_id" />
+          <ScalarProperty Name="sach_id" ColumnName="sach_id" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_hoadon">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_hoadon">
+        <MappingFragment StoreEntitySet="tbl_hoadon">
+          <ScalarProperty Name="hoadon_id" ColumnName="hoadon_id" />
+          <ScalarProperty Name="khang_id" ColumnName="khang_id" />
+          <ScalarProperty Name="dchi_id" ColumnName="dchi_id" />
+          <ScalarProperty Name="email_ngnhan" ColumnName="email_ngnhan" />
+          <ScalarProperty Name="sdt_ngnhan" ColumnName="sdt_ngnhan" />
+          <ScalarProperty Name="hten_ngnhan" ColumnName="hten_ngnhan" />
+          <ScalarProperty Name="nlap" ColumnName="nlap" />
+          <ScalarProperty Name="giolap" ColumnName="giolap" />
+          <ScalarProperty Name="tt_trcthue" ColumnName="tt_trcthue" />
+          <ScalarProperty Name="tt_ck" ColumnName="tt_ck" />
+          <ScalarProperty Name="tt_thue" ColumnName="tt_thue" />
+          <ScalarProperty Name="thanhtien" ColumnName="thanhtien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_hoadon_chitiet">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_hoadon_chitiet">
+        <MappingFragment StoreEntitySet="tbl_hoadon_chitiet">
+          <ScalarProperty Name="hdchitiet_id" ColumnName="hdchitiet_id" />
+          <ScalarProperty Name="hoadon_id" ColumnName="hoadon_id" />
+          <ScalarProperty Name="sach_id" ColumnName="sach_id" />
+          <ScalarProperty Name="dgia" ColumnName="dgia" />
+          <ScalarProperty Name="pt_ck" ColumnName="pt_ck" />
+          <ScalarProperty Name="stck" ColumnName="stck" />
+          <ScalarProperty Name="slg" ColumnName="slg" />
+          <ScalarProperty Name="pt_thue" ColumnName="pt_thue" />
+          <ScalarProperty Name="tienthue" ColumnName="tienthue" />
+          <ScalarProperty Name="thanhtien" ColumnName="thanhtien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_img_sach">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_img_sach">
+        <MappingFragment StoreEntitySet="tbl_img_sach">
+          <ScalarProperty Name="img_id" ColumnName="img_id" />
+          <ScalarProperty Name="img_path" ColumnName="img_path" />
+          <ScalarProperty Name="sach_id" ColumnName="sach_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_khachhang">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_khachhang">
+        <MappingFragment StoreEntitySet="tbl_khachhang">
+          <ScalarProperty Name="khang_id" ColumnName="khang_id" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="gtinh" ColumnName="gtinh" />
+          <ScalarProperty Name="ngsinh" ColumnName="ngsinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_nxb">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_nxb">
+        <MappingFragment StoreEntitySet="tbl_nxb">
+          <ScalarProperty Name="nxb_id" ColumnName="nxb_id" />
+          <ScalarProperty Name="ten_nxb" ColumnName="ten_nxb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_phuong">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_phuong">
+        <MappingFragment StoreEntitySet="tbl_phuong">
+          <ScalarProperty Name="phuong_id" ColumnName="phuong_id" />
+          <ScalarProperty Name="ten_phuong" ColumnName="ten_phuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_quan">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_quan">
+        <MappingFragment StoreEntitySet="tbl_quan">
+          <ScalarProperty Name="quan_id" ColumnName="quan_id" />
+          <ScalarProperty Name="ten_quan" ColumnName="ten_quan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_sach">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_sach">
+        <MappingFragment StoreEntitySet="tbl_sach">
+          <ScalarProperty Name="sach_id" ColumnName="sach_id" />
+          <ScalarProperty Name="ten_sach" ColumnName="ten_sach" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="trangthai_id" ColumnName="trangthai_id" />
+          <ScalarProperty Name="nxb_id" ColumnName="nxb_id" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="sl_conlai" ColumnName="sl_conlai" />
+          <ScalarProperty Name="ngayst" ColumnName="ngayst" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_tacgia">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_tacgia">
+        <MappingFragment StoreEntitySet="tbl_tacgia">
+          <ScalarProperty Name="tacgia_id" ColumnName="tacgia_id" />
+          <ScalarProperty Name="ten_tacgia" ColumnName="ten_tacgia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_theloai">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_theloai">
+        <MappingFragment StoreEntitySet="tbl_theloai">
+          <ScalarProperty Name="theloai_id" ColumnName="theloai_id" />
+          <ScalarProperty Name="ten_theloai" ColumnName="ten_theloai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_tinh">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_tinh">
+        <MappingFragment StoreEntitySet="tbl_tinh">
+          <ScalarProperty Name="tinh_id" ColumnName="tinh_id" />
+          <ScalarProperty Name="ten_tinh" ColumnName="ten_tinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_trangthai">
+      <EntityTypeMapping TypeName="BookStoreModel.tbl_trangthai">
+        <MappingFragment StoreEntitySet="tbl_trangthai">
+          <ScalarProperty Name="trangthai_id" ColumnName="trangthai_id" />
+          <ScalarProperty Name="ten_trangthai" ColumnName="ten_trangthai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tbl_sach_tacgia" TypeName="BookStoreModel.tbl_sach_tacgia" StoreEntitySet="tbl_sach_tacgia">
+      <EndProperty Name="tbl_sach">
+        <ScalarProperty Name="sach_id" ColumnName="sach_id" />
+      </EndProperty>
+      <EndProperty Name="tbl_tacgia">
+        <ScalarProperty Name="tacgia_id" ColumnName="tacgia_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tbl_sach_theloai" TypeName="BookStoreModel.tbl_sach_theloai" StoreEntitySet="tbl_sach_theloai">
+      <EndProperty Name="tbl_sach">
+        <ScalarProperty Name="sach_id" ColumnName="sach_id" />
+      </EndProperty>
+      <EndProperty Name="tbl_theloai">
+        <ScalarProperty Name="theloai_id" ColumnName="theloai_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="QRY_GetAllHomePage" FunctionName="BookStoreModel.Store.QRY_GetAllHomePage" />
+  </EntityContainerMapping>
+</Mapping>
